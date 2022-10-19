@@ -1,0 +1,41 @@
+#$SiteURL="https://consanto.sharepoint.com/sites/Test1" 
+
+#Connect-PnPOnline -Url $SiteURL -UseWebLogin 
+
+  
+
+#$Info = Get-PnpSite 
+
+  
+
+#Write-Output $Info 
+
+  
+
+  
+
+#Remove-PnPList -Identity "Test List" -Force 
+
+  
+
+#$Info = Get-PnpSite 
+
+  
+
+#Write-Output $Info 
+
+  
+
+ Below is the code  
+
+$SiteURL="https://consanto.sharepoint.com/sites/Test1" 
+
+Connect-PnPOnline -Url $SiteURL -UseWebLogin 
+
+$Info = Get-PnpSite 
+
+  
+
+Write-Output $Info 
+
+Get-PnPListItem -List "Master Queue" -Fields "ID" -PageSize 100 -ScriptBlock { Param($items) $items | Sort-Object -Descending | ForEach-Object{ $_.DeleteObject() } } 
